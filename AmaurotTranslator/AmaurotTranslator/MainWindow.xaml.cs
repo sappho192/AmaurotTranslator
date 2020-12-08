@@ -91,6 +91,12 @@ namespace AmaurotTranslator
                     isTranslatorBusy = false;
                 }
             }
-        }       
+        }
+
+        private void Window_PreviewLostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        {
+            Window window = (Window)sender;
+            window.Topmost = true;
+        }
     }
 }

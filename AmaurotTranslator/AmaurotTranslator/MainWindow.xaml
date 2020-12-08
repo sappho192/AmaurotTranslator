@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmaurotTranslator"
-        mc:Ignorable="d" WindowStyle="ToolWindow"
+        mc:Ignorable="d" WindowStyle="ToolWindow" Topmost="True"
         Title="Amaurot Translator 0.0.1" Height="150" Width="350"
+        PreviewLostKeyboardFocus="Window_PreviewLostKeyboardFocus"
         MaxHeight="200" MaxWidth="400"
         MinHeight="150" MinWidth="300">
     <Grid>
