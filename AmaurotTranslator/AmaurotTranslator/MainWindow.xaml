@@ -4,25 +4,73 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmaurotTranslator"
-        mc:Ignorable="d"
-        Title="Amaurot Translator 0.0.1" Height="200" Width="400">
+        mc:Ignorable="d" WindowStyle="ToolWindow"
+        Title="Amaurot Translator 0.0.1" Height="200" Width="400"
+        MaxHeight="200" MaxWidth="400"
+        MinHeight="150" MinWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*"/>
+            <!--<RowDefinition Height="1*"/>-->
+            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <TextBox Grid.Column="0" Name="tbOriginal" TextWrapping="Wrap"
-                     AcceptsReturn="False" PreviewKeyDown="tbOriginal_PreviewKeyDown"/>
-        </Grid>
         <Grid Grid.Row="1">
-            <TextBox Grid.Row="0" Name="tbTranslated" TextWrapping="Wrap"
-                     AcceptsReturn="False"/>
-        </Grid>
-        <Grid Grid.Row="2">
-            <TextBox Grid.Row="0" Name="tbReTranslated" TextWrapping="Wrap"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBox Grid.Column="0" Name="tbOriginal" TextWrapping="Wrap"
+                     AcceptsReturn="False" PreviewKeyDown="tbOriginal_PreviewKeyDown"/>
+                <TextBlock Text="번역하고 싶은 말을 적어보세요. (한국어)" IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=tbOriginal}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBox Grid.Row="0" Name="tbTranslated" TextWrapping="Wrap"
+                     IsReadOnly="True" AcceptsReturn="False"/>
+                <TextBlock Text="번역된 문장이 적히는 곳입니다. (일본어)" IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=tbTranslated}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBox Grid.Row="0" Name="tbReTranslated" TextWrapping="Wrap"
                      IsEnabled="False"/>
+                <TextBlock Text="번역된 일본어를 다시 한국어로 번역한 결과입니다." IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=tbReTranslated}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
         </Grid>
     </Grid>
+
 </Window>
