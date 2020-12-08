@@ -10,6 +10,7 @@ namespace AmaurotTranslator
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool isTranslatorBusy = false;
         ChromeOptions chromeOptions = new ChromeOptions();
         public MainWindow()
         {
@@ -82,12 +83,14 @@ namespace AmaurotTranslator
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
-                if (!tbOriginal.Text.Equals(""))
+                if (!tbOriginal.Text.Equals("") && (isTranslatorBusy == false))
                 {
+                    isTranslatorBusy = true;
                     Translate();
                     ReTranslate();
+                    isTranslatorBusy = false;
                 }
             }
-        }
+        }       
     }
 }
