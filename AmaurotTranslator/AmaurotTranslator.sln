@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmaurotTranslator", "AmaurotTranslator\AmaurotTranslator.csproj", "{5ED3DAE9-A7EF-407A-9A0A-103640955466}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5ED3DAE9-A7EF-407A-9A0A-103640955466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ED3DAE9-A7EF-407A-9A0A-103640955466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ED3DAE9-A7EF-407A-9A0A-103640955466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED3DAE9-A7EF-407A-9A0A-103640955466}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {495A75E8-E4B3-4E0E-A014-45E010ADC248}
+	EndGlobalSection
+EndGlobal
