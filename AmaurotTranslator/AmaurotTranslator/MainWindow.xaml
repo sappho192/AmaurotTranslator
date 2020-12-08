@@ -8,7 +8,8 @@
         Title="Amaurot Translator 0.0.1" Height="150" Width="350"
         PreviewLostKeyboardFocus="Window_PreviewLostKeyboardFocus"
         MaxHeight="200" MaxWidth="400"
-        MinHeight="150" MinWidth="300">
+        MinHeight="150" MinWidth="300"
+        Icon="icon.ico">
     <Grid>
         <Grid.RowDefinitions>
             <!--<RowDefinition Height="1*"/>-->
