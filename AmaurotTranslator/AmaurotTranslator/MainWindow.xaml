@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmaurotTranslator"
         mc:Ignorable="d" WindowStyle="ToolWindow"
-        Title="Amaurot Translator 0.0.1" Height="200" Width="400"
+        Title="Amaurot Translator 0.0.1" Height="150" Width="350"
         MaxHeight="200" MaxWidth="400"
         MinHeight="150" MinWidth="300">
     <Grid>
