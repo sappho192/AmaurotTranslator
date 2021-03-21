@@ -2,6 +2,7 @@
 Lightweight &amp; single way translator for FFXIV
 
 ![demo.gif](demo.gif)
+![demo2.gif](demo2.gif)
 
 ## 권장 실행환경  
 Windows 10 64bit
