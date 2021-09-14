@@ -54,7 +54,7 @@ namespace AmaurotTranslator
                     txtTarget = browser.webDriver.FindElement(By.Id("txtTarget"));
                 } while (txtTarget.Text.Equals(""));
                 tbTranslated.Text = txtTarget.Text;
-
+                Clipboard.SetText(txtTarget.Text);
             }
             catch (Exception ex)
             {
