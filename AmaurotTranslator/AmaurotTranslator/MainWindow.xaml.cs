@@ -2,9 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using WebDriverManager;
-using WebDriverManager.DriverConfigs.Impl;
+using Serilog;
 
 namespace AmaurotTranslator
 {
@@ -60,6 +58,9 @@ namespace AmaurotTranslator
             }
             catch (Exception ex)
             {
+                Log.Fatal("TRANSLATOR MET UNHANDLED EXCEPTION: {@Exception}, {@GroundZero}",
+                        ex,
+                        ex.StackTrace);
                 tbTranslated.Text = "번역실패";
             }
         }
@@ -82,6 +83,9 @@ namespace AmaurotTranslator
             }
             catch (Exception ex)
             {
+                Log.Fatal("TRANSLATOR MET UNHANDLED EXCEPTION: {@Exception}, {@GroundZero}",
+                    ex,
+                    ex.StackTrace);
                 tbReTranslated.Text = "번역실패";
             }
         }

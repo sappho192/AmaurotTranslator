@@ -1,10 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -19,7 +14,6 @@ namespace AmaurotTranslator
         private Browser()
         {
             chromeOptions.AddArguments("--headless");
-            //Context.Instance.browser = new ChromeDriver(driverService, chromeOptions);
             new DriverManager().SetUpDriver(new ChromeConfig());
             var driverService = ChromeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
@@ -39,8 +33,11 @@ namespace AmaurotTranslator
         {
             if(_browser != null)
             {
-                webDriver.Quit();
-                webDriver.Dispose();
+                if(webDriver != null)
+                {
+                    webDriver.Quit();
+                    webDriver.Dispose();
+                }
             }
         }
     }
