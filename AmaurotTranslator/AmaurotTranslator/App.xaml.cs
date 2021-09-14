@@ -10,10 +10,6 @@ namespace AmaurotTranslator
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            if (Context.Instance.browser != null)
-            {
-                Context.Instance.browser.Dispose();
-            }
         }
     }
 }

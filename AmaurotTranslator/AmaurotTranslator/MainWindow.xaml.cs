@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace AmaurotTranslator
 {
@@ -10,23 +13,20 @@ namespace AmaurotTranslator
     /// </summary>
     public partial class MainWindow : Window
     {
-        bool isTranslatorBusy = false;
-        ChromeOptions chromeOptions = new ChromeOptions();
+        private bool isTranslatorBusy = false;
 
-        string sk = "ko";
-        string tk = "ja";
-        const int STATE_K2J = 1;
-        const int STATE_J2K = 2;
-        int currentState = 0;
+        private string sk = "ko";
+        private string tk = "ja";
+        private const int STATE_K2J = 1;
+        private const int STATE_J2K = 2;
+        private int currentState = 0;
+        private Browser browser;
 
         public MainWindow()
         {
             InitializeComponent();
             currentState = STATE_K2J;
-            var driverService = ChromeDriverService.CreateDefaultService();
-            driverService.HideCommandPromptWindow = true;
-            chromeOptions.AddArguments("--headless");
-            Context.Instance.browser = new ChromeDriver(driverService, chromeOptions);
+            browser = Browser.Instance();
 
             // Following code will watch automatically kill chromeDriver.exe
             // WatchDogMain.exe is from my repo: https://github.com/sappho192/WatchDogDotNet
@@ -44,14 +44,16 @@ namespace AmaurotTranslator
         {
             string sentence = tbOriginal.Text;
             string testUrl = $"https://papago.naver.com/?sk={sk}&tk={tk}&st={Uri.EscapeDataString(sentence)}";
-            Context.Instance.browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-            Context.Instance.browser.Navigate().GoToUrl(testUrl);
+            
+            browser.webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            browser.webDriver.Navigate().GoToUrl(testUrl);
+
             try
             {
                 OpenQA.Selenium.IWebElement txtTarget;
                 do
                 {
-                    txtTarget = Context.Instance.browser.FindElementById("txtTarget");
+                    txtTarget = browser.webDriver.FindElement(By.Id("txtTarget"));
                 } while (txtTarget.Text.Equals(""));
                 tbTranslated.Text = txtTarget.Text;
 
@@ -65,14 +67,15 @@ namespace AmaurotTranslator
         {
             string sentence = tbTranslated.Text;
             string testUrl = $"https://papago.naver.com/?sk={tk}&tk={sk}&st={Uri.EscapeDataString(sentence)}";
-            Context.Instance.browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-            Context.Instance.browser.Navigate().GoToUrl(testUrl);
+            browser.webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            browser.webDriver.Navigate().GoToUrl(testUrl);
+
             try
             {
                 OpenQA.Selenium.IWebElement txtTarget;
                 do
                 {
-                    txtTarget = Context.Instance.browser.FindElementById("txtTarget");
+                    txtTarget = browser.webDriver.FindElement(By.Id("txtTarget"));
                 } while (txtTarget.Text.Equals(""));
                 tbReTranslated.Text = txtTarget.Text;
 
