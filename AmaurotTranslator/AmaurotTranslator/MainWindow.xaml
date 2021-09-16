@@ -1,12 +1,12 @@
 ﻿<Window x:Class="AmaurotTranslator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmaurotTranslator"
         mc:Ignorable="d" WindowStyle="None" Topmost="True"
-        Title="Amaurot Translator 0.0.3" Height="150" Width="300"
+        Title="Amaurot Translator 1.0.0" Height="150" Width="300"
         PreviewLostKeyboardFocus="Window_PreviewLostKeyboardFocus"
         MaxHeight="250" MaxWidth="400"
         MinHeight="150" MinWidth="300"
@@ -14,9 +14,9 @@
     <Window.Background>
         <SolidColorBrush Opacity="100" Color="White"></SolidColorBrush>
     </Window.Background>
-    <i:Interaction.Behaviors>
+    <Behaviors:Interaction.Behaviors>
         <local:DragMoveBehavior/>
-    </i:Interaction.Behaviors>
+    </Behaviors:Interaction.Behaviors>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO"/>
