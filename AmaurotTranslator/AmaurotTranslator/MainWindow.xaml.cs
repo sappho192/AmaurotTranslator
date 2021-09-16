@@ -12,6 +12,7 @@ namespace AmaurotTranslator
     public partial class MainWindow : Window
     {
         private bool isTranslatorBusy = false;
+        private bool isUIInitialized = false;
 
         private string sk = "ko";
         private string tk = "ja";
@@ -23,6 +24,8 @@ namespace AmaurotTranslator
         public MainWindow()
         {
             InitializeComponent();
+            isUIInitialized = true;
+            LoadUserSettings();
             currentState = STATE_K2J;
             browser = Browser.Instance();
 
@@ -36,6 +39,14 @@ namespace AmaurotTranslator
             info.UseShellExecute = false;
             info.CreateNoWindow = true;
             Process watchdogProcess = Process.Start(info);
+        }
+
+        private void LoadUserSettings()
+        {
+            var globalOpacity = Properties.Settings.Default.globalOpacity;
+            grOriginal.Opacity = globalOpacity;
+            grTranslated.Opacity = globalOpacity;
+            slOpacity.Value = globalOpacity;
         }
 
         private void Translate()
@@ -141,6 +152,23 @@ namespace AmaurotTranslator
                 tbOriginal.Text = "";
                 tbTranslated.Text = "";
                 tbReTranslated.Text = "";
+            }
+        }
+
+        private void slOpacity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if(isUIInitialized)
+            {
+                Properties.Settings.Default.globalOpacity = e.NewValue;
+                Properties.Settings.Default.Save();
+            }
+            if (grOriginal != null)
+            {
+                grOriginal.Opacity = e.NewValue;
+            }
+            if (grTranslated != null)
+            {
+                grTranslated.Opacity = e.NewValue;
             }
         }
     }

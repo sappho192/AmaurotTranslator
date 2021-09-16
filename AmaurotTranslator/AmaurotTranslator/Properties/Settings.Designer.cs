@@ -22,5 +22,17 @@ namespace AmaurotTranslator.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public double globalOpacity {
+            get {
+                return ((double)(this["globalOpacity"]));
+            }
+            set {
+                this["globalOpacity"] = value;
+            }
+        }
     }
 }
