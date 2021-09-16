@@ -5,5 +5,11 @@
     <Setting Name="globalOpacity" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.5</Value>
     </Setting>
+    <Setting Name="globalPosTop" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="globalPosLeft" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

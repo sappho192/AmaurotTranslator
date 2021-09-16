@@ -11,6 +11,8 @@
         AllowsTransparency="True"
         MaxHeight="250" MaxWidth="400"
         MinHeight="150" MinWidth="300"
+        Name="mainWindow"
+        LocationChanged="Window_LocationChanged"
         Icon="icon.ico">
     <Window.Background>
         <SolidColorBrush Opacity="0.1" Color="Black"></SolidColorBrush>

@@ -47,6 +47,8 @@ namespace AmaurotTranslator
             grOriginal.Opacity = globalOpacity;
             grTranslated.Opacity = globalOpacity;
             slOpacity.Value = globalOpacity;
+            mainWindow.Top = Properties.Settings.Default.globalPosTop;
+            mainWindow.Left = Properties.Settings.Default.globalPosLeft;
         }
 
         private void Translate()
@@ -169,6 +171,19 @@ namespace AmaurotTranslator
             if (grTranslated != null)
             {
                 grTranslated.Opacity = e.NewValue;
+            }
+        }
+
+        private void Window_LocationChanged(object sender, EventArgs e)
+        {
+            if(isUIInitialized)
+            {
+                if (mainWindow.WindowState.Equals(WindowState.Normal))
+                {
+                    Properties.Settings.Default.globalPosTop = mainWindow.Top;
+                    Properties.Settings.Default.globalPosLeft = mainWindow.Left;
+                    Properties.Settings.Default.Save();
+                }
             }
         }
     }

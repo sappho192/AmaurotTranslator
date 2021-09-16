@@ -34,5 +34,29 @@ namespace AmaurotTranslator.Properties {
                 this["globalOpacity"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double globalPosTop {
+            get {
+                return ((double)(this["globalPosTop"]));
+            }
+            set {
+                this["globalPosTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double globalPosLeft {
+            get {
+                return ((double)(this["globalPosLeft"]));
+            }
+            set {
+                this["globalPosLeft"] = value;
+            }
+        }
     }
 }
