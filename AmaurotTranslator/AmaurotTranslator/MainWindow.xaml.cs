@@ -46,6 +46,7 @@ namespace AmaurotTranslator
             var globalOpacity = Properties.Settings.Default.globalOpacity;
             grOriginal.Opacity = globalOpacity;
             grTranslated.Opacity = globalOpacity;
+            grReTranslated.Opacity = globalOpacity;
             slOpacity.Value = globalOpacity;
             mainWindow.Top = Properties.Settings.Default.globalPosTop;
             mainWindow.Left = Properties.Settings.Default.globalPosLeft;
@@ -171,6 +172,10 @@ namespace AmaurotTranslator
             if (grTranslated != null)
             {
                 grTranslated.Opacity = e.NewValue;
+            }
+            if (grReTranslated != null)
+            {
+                grReTranslated.Opacity = e.NewValue;
             }
         }
 

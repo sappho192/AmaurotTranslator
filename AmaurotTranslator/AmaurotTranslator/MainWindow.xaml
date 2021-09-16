@@ -84,8 +84,9 @@
                 </TextBlock>
             </Grid>
             <Grid Grid.Row="2" Background="Transparent">
+                <Grid Name="grReTranslated" Background="Black" Opacity="0.5"/>
                 <TextBox Grid.Row="0" Name="tbReTranslated" TextWrapping="Wrap"
-                         Background="Black" Opacity="1" Foreground="White" IsReadOnly="True"
+                         Background="Transparent" Foreground="White" IsReadOnly="True"
                      IsEnabled="False"/>
                 <TextBlock Name="tbTk2Sk"
                            Text="번역된 일본어를 다시 한국어로 번역한 결과입니다." IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
