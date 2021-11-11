@@ -1,4 +1,4 @@
-# Amaurot-Translator
+# Amaurot Translator
 Lightweight &amp; Japanese-Korean translator for FFXIV
 
 ![demo.gif](demo.gif) ![demo2.gif](demo2.gif)  
