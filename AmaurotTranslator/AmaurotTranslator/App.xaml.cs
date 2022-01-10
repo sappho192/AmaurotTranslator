@@ -14,6 +14,11 @@ namespace AmaurotTranslator
     {
         public static readonly string Birthdate = DateTime.Now.ToString("yyyyMMdd_HHmmss");
         public static bool makeMiniDump = false;
+        public static readonly string logPath = $"./logs";
+        public static readonly string logFile = $"log-{Birthdate}.txt";
+        public static readonly string logFilePath = $"{logPath}/{logFile}";
+        public static readonly string logChromeFile = $"log-{Birthdate}-chrome.txt";
+        public static readonly string logChromeFilePath = $"{logPath}/{logChromeFile}";
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -31,7 +36,7 @@ namespace AmaurotTranslator
         {
             Log.Logger = new LoggerConfiguration()
                             .WriteTo.File(formatter: new CompactJsonFormatter(),
-                                path: $"./logs/log-{Birthdate}.txt",
+                                path: logFilePath,
                                 retainedFileCountLimit: null)
                             .MinimumLevel.Debug()
                             .CreateLogger();

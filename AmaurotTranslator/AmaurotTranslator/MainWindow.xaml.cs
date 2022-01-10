@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using OpenQA.Selenium;
 using Serilog;
@@ -27,6 +28,10 @@ namespace AmaurotTranslator
             isUIInitialized = true;
             LoadUserSettings();
             currentState = STATE_K2J;
+
+            // Calculate log folder size
+            UpdateLogFolderSize();
+
             browser = Browser.Instance();
 
             // Following code will watch automatically kill chromeDriver.exe
@@ -39,6 +44,11 @@ namespace AmaurotTranslator
             info.UseShellExecute = false;
             info.CreateNoWindow = true;
             Process watchdogProcess = Process.Start(info);
+        }
+
+        private void UpdateLogFolderSize()
+        {
+            lbLogSize.Content = $"로그: {FormatBytes(GetDirectorySize("./logs"))}";
         }
 
         private void LoadUserSettings()
@@ -104,6 +114,35 @@ namespace AmaurotTranslator
             }
         }
 
+        public static long GetDirectorySize(string path)
+        {
+            long size = 0;
+            DirectoryInfo dirInfo = new(path);
+
+            foreach (FileInfo fi in dirInfo.GetFiles("*", SearchOption.AllDirectories))
+            {
+                size += fi.Length;
+            }
+
+            return size;
+        }
+
+        public static string FormatBytes(long bytes)
+        {
+            const int scale = 1024;
+            string[] orders = new string[] { "GB", "MB", "KB", "Bytes" };
+            long max = (long)Math.Pow(scale, orders.Length - 1);
+
+            foreach (string order in orders)
+            {
+                if (bytes > max)
+                    return string.Format("{0:##.##}{1}", decimal.Divide(bytes, max), order);
+
+                max /= scale;
+            }
+            return "0B";
+        }
+
         private void tbOriginal_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
@@ -114,6 +153,7 @@ namespace AmaurotTranslator
                     Translate();
                     ReTranslate();
                     isTranslatorBusy = false;
+                    UpdateLogFolderSize();
                 }
             }
         }
@@ -190,6 +230,29 @@ namespace AmaurotTranslator
                     Properties.Settings.Default.Save();
                 }
             }
+        }
+
+        private void btClearLog_Click(object sender, RoutedEventArgs e)
+        {
+            string[] filePaths = Directory.GetFiles(App.logPath);
+            foreach (string filePath in filePaths)
+            {
+                var name = new FileInfo(filePath).Name;
+                name = name.ToLower();
+                if (name != App.logFile && name != App.logChromeFile)
+                {
+                    try
+                    {
+                        File.Delete(filePath);
+                    }
+                    catch (IOException ex)
+                    {
+                        Log.Debug($"{ex.Message}");
+                    }
+                }
+            }
+
+            UpdateLogFolderSize();
         }
     }
 }
