@@ -70,6 +70,7 @@ namespace AmaurotTranslator
             browser.webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             browser.webDriver.Navigate().GoToUrl(testUrl);
 
+            string translated = string.Empty;
             try
             {
                 OpenQA.Selenium.IWebElement txtTarget;
@@ -77,8 +78,8 @@ namespace AmaurotTranslator
                 {
                     txtTarget = browser.webDriver.FindElement(By.Id("txtTarget"));
                 } while (txtTarget.Text.Equals(""));
-                tbTranslated.Text = txtTarget.Text;
-                Clipboard.SetText(txtTarget.Text);
+                translated = txtTarget.Text;
+                tbTranslated.Text = translated;
             }
             catch (Exception ex)
             {
@@ -86,6 +87,19 @@ namespace AmaurotTranslator
                         ex,
                         ex.StackTrace);
                 tbTranslated.Text = "번역실패";
+            }
+            
+            try
+            {
+                Clipboard.Clear();
+                Clipboard.SetDataObject(translated);
+                //Clipboard.SetText(txtTarget.Text);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal("TRANSLATOR MET UNHANDLED EXCEPTION: {@Exception}, {@GroundZero}",
+                    ex,
+                    ex.StackTrace);
             }
         }
         private void ReTranslate()
