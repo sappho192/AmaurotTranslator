@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.IO;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -13,7 +14,7 @@ namespace AmaurotTranslator
 
         private Browser()
         {
-            chromeOptions.AddArguments("--headless");
+            chromeOptions.AddArguments("--headless", "--no-sandbox", "--disable-gpu");
             new DriverManager().SetUpDriver(new ChromeConfig());
             var driverService = ChromeDriverService.CreateDefaultService();
             if (File.Exists("DEBUG_MODE.txt") || File.Exists("DEBUG_MODE.txt.txt"))
