@@ -16,7 +16,7 @@ namespace AmaurotTranslator
             chromeOptions.AddArguments("--headless");
             new DriverManager().SetUpDriver(new ChromeConfig());
             var driverService = ChromeDriverService.CreateDefaultService();
-            if (File.Exists("DEBUG_MODE.txt"))
+            if (File.Exists("DEBUG_MODE.txt") || File.Exists("DEBUG_MODE.txt.txt"))
             {
                 driverService.LogPath = App.logChromeFilePath;
             }
