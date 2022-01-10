@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:AmaurotTranslator"
         mc:Ignorable="d" WindowStyle="None" Topmost="True"
         Title="Amaurot Translator 1.0.0" Height="150" Width="300"
@@ -33,7 +33,7 @@
                         Style="{StaticResource CustomSliderStyle}" ValueChanged="slOpacity_ValueChanged"/>
                 <Label Name="lbLogSize" Content="로그: " Background="#00000000" Foreground="White" BorderBrush="#FF7C7C7C"/>
                 <Button Name="btClearLog" Click="btClearLog_Click" Background="#00000000" Foreground="White" BorderBrush="#FF7C7C7C">
-                    <fa:FontAwesome FontSize="16" Icon="TrashOutline" />
+                    <fa5:SvgAwesome Width="16" Foreground="White" Icon="Regular_TrashAlt" />
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
