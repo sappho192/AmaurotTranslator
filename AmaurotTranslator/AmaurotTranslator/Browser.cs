@@ -14,7 +14,8 @@ namespace AmaurotTranslator
 
         private Browser()
         {
-            chromeOptions.AddArguments("--headless", "--no-sandbox", "--disable-gpu");
+            chromeOptions.AddArguments("disable-infobars", "--headless", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage");
+            //chromeOptions.AddArguments("--headless", "--no-sandbox", "--disable-gpu");
             new DriverManager().SetUpDriver(new ChromeConfig());
             var driverService = ChromeDriverService.CreateDefaultService();
             if (File.Exists("DEBUG_MODE.txt") || File.Exists("DEBUG_MODE.txt.txt"))
