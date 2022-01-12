@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net5.0-windows10.0.22000.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>D:\REPO\</PublishUrl>
@@ -36,6 +36,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <StartupObject>AmaurotTranslator.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Resource Include="Icon.ico" />
