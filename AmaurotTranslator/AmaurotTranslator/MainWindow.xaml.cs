@@ -67,7 +67,7 @@ namespace AmaurotTranslator
             string sentence = tbOriginal.Text;
             string testUrl = $"https://papago.naver.com/?sk={sk}&tk={tk}&st={Uri.EscapeDataString(sentence)}";
             
-            browser.webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            browser.webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             browser.webDriver.Navigate().GoToUrl(testUrl);
 
             string translated = string.Empty;
