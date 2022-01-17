@@ -14,4 +14,4 @@ Windows 10 64bit
 오류 제보, 기능 추가 문의는 [[Issues](https://github.com/sappho192/AmaurotTranslator/issues)] 혹은 [[Discord](https://discord.gg/HJ8Y2sMjfu)]로 문의바랍니다.
 
 ## 다운로드
-최신 버전(1.0.0): [[다운로드](https://github.com/sappho192/AmaurotTranslator/releases/download/1.0.0/AmourotTranslator.v1.0.0.zip)] 
+최신 버전(1.1.0): [[다운로드](https://github.com/sappho192/AmaurotTranslator/releases/download/1.1.0/AmourotTranslator.v1.1.0.zip)] 
