@@ -31,13 +31,13 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <Slider Name="slOpacity" Width="80" Value="0.5" Minimum="0.1" Maximum="1" Margin="8,2,8,2"
                         Style="{StaticResource CustomSliderStyle}" ValueChanged="slOpacity_ValueChanged"/>
-                <Label Name="lbLogSize" Content="로그: " Background="#00000000" Foreground="White" BorderBrush="#FF7C7C7C"/>
+                <Label Name="lbLogSize" Content="log: " Background="#00000000" Foreground="White" BorderBrush="#FF7C7C7C"/>
                 <Button Name="btClearLog" Click="btClearLog_Click" Background="#00000000" Foreground="White" BorderBrush="#FF7C7C7C">
                     <fa5:SvgAwesome Width="16" Foreground="White" Icon="Regular_TrashAlt" />
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Name="btJKSwitch" Click="btJKSwitch_Click" Content="일→한" Background="#00000000" Foreground="White" BorderBrush="#FF7C7C7C"/>
+                <Button Name="btJKSwitch" Click="btJKSwitch_Click" Content="JP→EN" Background="#00000000" Foreground="White" BorderBrush="#FF7C7C7C"/>
                 <Border Width="10"/>
                 <Button Name="btExit" Click="btExit_Click" Content=" X " Background="#00000000" Foreground="White" BorderBrush="#FF7C7C7C"/>
             </StackPanel>
@@ -54,7 +54,7 @@
                          Background="Transparent" Foreground="White"
                      AcceptsReturn="False" PreviewKeyDown="tbOriginal_PreviewKeyDown"/>
                 <TextBlock Name="tbSk"
-                           Text="번역하고 싶은 말을 적어보세요. (한국어)" IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
+                           Text="Write the sentence you want to translate. (en)" IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Setter Property="Visibility" Value="Hidden"/>
@@ -74,7 +74,7 @@
                          Background="Transparent" Foreground="White"
                      IsReadOnly="True" AcceptsReturn="False"/>
                 <TextBlock Name="tbTk"
-                           Text="번역된 문장이 적히는 곳입니다. (일본어)" IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
+                           Text="Translate result (jp)" IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Setter Property="Visibility" Value="Hidden"/>
@@ -94,7 +94,7 @@
                          Background="Transparent" Foreground="White" IsReadOnly="True"
                      IsEnabled="False"/>
                 <TextBlock Name="tbTk2Sk"
-                           Text="번역된 일본어를 다시 한국어로 번역한 결과입니다." IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
+                           Text="Re-translated result" IsHitTestVisible="False" VerticalAlignment="Center" Margin="15,10,10,10" HorizontalAlignment="Left">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Setter Property="Visibility" Value="Hidden"/>

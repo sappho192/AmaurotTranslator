@@ -15,7 +15,7 @@ namespace AmaurotTranslator
         private bool isTranslatorBusy = false;
         private bool isUIInitialized = false;
 
-        private string sk = "ko";
+        private string sk = "en";
         private string tk = "ja";
         private const int STATE_K2J = 1;
         private const int STATE_J2K = 2;
@@ -48,7 +48,7 @@ namespace AmaurotTranslator
 
         private void UpdateLogFolderSize()
         {
-            lbLogSize.Content = $"로그: {FormatBytes(GetDirectorySize("./logs"))}";
+            lbLogSize.Content = $"log: {FormatBytes(GetDirectorySize("./logs"))}";
         }
 
         private void LoadUserSettings()
@@ -86,7 +86,7 @@ namespace AmaurotTranslator
                 Log.Fatal("TRANSLATOR MET UNHANDLED EXCEPTION: {@Exception}, {@GroundZero}",
                         ex,
                         ex.StackTrace);
-                tbTranslated.Text = "번역실패";
+                tbTranslated.Text = "Failed to translate";
             }
             
             try
@@ -188,24 +188,24 @@ namespace AmaurotTranslator
             if(currentState == STATE_K2J)
             {
                 currentState = STATE_J2K;
-                btJKSwitch.Content = "한→일";
+                btJKSwitch.Content = "EN→JP";
                 sk = "ja";
-                tk = "ko";
-                tbSk.Text = "번역하고 싶은 말을 적어보세요. (일본어)";
-                tbTk.Text = "번역된 문장이 적히는 곳입니다. (한국어)";
-                tbTk2Sk.Text = "번역된 한국어를 다시 일본어로 번역한 결과입니다.";
+                tk = "en";
+                tbSk.Text = "Write the sentence you want to translate. (jp)";
+                tbTk.Text = "Translate result (en)";
+                tbTk2Sk.Text = "Re-translated result";
                 tbOriginal.Text = "";
                 tbTranslated.Text = "";
                 tbReTranslated.Text = "";
             } else
             {
                 currentState = STATE_K2J;
-                btJKSwitch.Content = "일→한";
-                sk = "ko";
+                btJKSwitch.Content = "JP→EN";
+                sk = "en";
                 tk = "ja";
-                tbSk.Text = "번역하고 싶은 말을 적어보세요. (한국어)";
-                tbTk.Text = "번역된 문장이 적히는 곳입니다. (일본어)";
-                tbTk2Sk.Text = "번역된 일본어를 다시 한국어로 번역한 결과입니다.";
+                tbSk.Text = "Write the sentence you want to translate. (en)";
+                tbTk.Text = "Translate result (jp)";
+                tbTk2Sk.Text = "Re-translated result";
                 tbOriginal.Text = "";
                 tbTranslated.Text = "";
                 tbReTranslated.Text = "";
