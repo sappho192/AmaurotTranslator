@@ -2,6 +2,9 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Net;
+using System.Diagnostics;
+using Microsoft.Win32;
 using OpenQA.Selenium;
 using Serilog;
 
@@ -19,6 +22,8 @@ namespace AmaurotTranslator
         private string tk = "ja";
         private const int STATE_K2J = 1;
         private const int STATE_J2K = 2;
+        private const string chromeUserKeyName = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe";
+        private const string chromeLocalKeyName = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe";
         private int currentState = 0;
         private Browser browser;
 
@@ -31,6 +36,13 @@ namespace AmaurotTranslator
 
             // Calculate log folder size
             UpdateLogFolderSize();
+
+            string latestDriverVersion = getLatestDriverVersion();
+            string currentChromeVersion = getCurrentChromeVersion();
+            if (!latestDriverVersion.Equals(currentChromeVersion))
+            {
+                MessageBox.Show($"최신 크롬을 사용하고 있지 않습니다. 크롬을 업데이트하지 않으면 번역기가 동작하지 않을 수 있어요.");
+            }
 
             browser = Browser.Instance();
 
@@ -49,6 +61,36 @@ namespace AmaurotTranslator
         private void UpdateLogFolderSize()
         {
             lbLogSize.Content = $"로그: {FormatBytes(GetDirectorySize("./logs"))}";
+        }
+
+        private string getLatestDriverVersion()
+        {
+            using (var client = new WebClient())
+            {
+                var result = client.DownloadString("https://chromedriver.storage.googleapis.com/LATEST_RELEASE");
+                return result;
+            }
+        }
+
+        private string getCurrentChromeVersion()
+        {
+            string result = string.Empty;
+            object path;
+            path = Registry.GetValue(chromeUserKeyName, "", null);
+            if (path != null)
+            {
+                Console.WriteLine("Chrome: " + FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion);
+                result = FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion;
+            } else
+            {
+                path = Registry.GetValue(chromeLocalKeyName, "", null);
+                if (path != null)
+                {
+                    Console.WriteLine("Chrome: " + FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion);
+                    result = FileVersionInfo.GetVersionInfo(path.ToString()).FileVersion;
+                }
+            }
+            return result; 
         }
 
         private void LoadUserSettings()
