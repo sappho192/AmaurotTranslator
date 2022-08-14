@@ -77,7 +77,7 @@ namespace AmaurotTranslator
             browser = browserTask.GetAwaiter().GetResult();
             var pageTask = Task.Run(async () => await browser.NewPageAsync());
             webPage = pageTask.GetAwaiter().GetResult();
-            webPage.DefaultTimeout = 5000;
+            webPage.DefaultTimeout = 0;
         }
 
         private void UpdateLogFolderSize()
