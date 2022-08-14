@@ -33,7 +33,10 @@ namespace AmaurotTranslator
             await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
             var _browser = await Puppeteer.LaunchAsync(new LaunchOptions
             {
-                Headless = true
+                Headless = true,
+                Args = new[] {
+                    "--js-flags=\"--max-old-space-size=128\""
+                },
             });
             return _browser;
         }
