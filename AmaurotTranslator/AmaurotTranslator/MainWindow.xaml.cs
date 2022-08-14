@@ -8,6 +8,8 @@ using PuppeteerSharp;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Page = PuppeteerSharp.Page;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace AmaurotTranslator
 {
@@ -115,7 +117,7 @@ namespace AmaurotTranslator
         {
             string sentence = tbOriginal.Text;
             string testUrl = $"https://papago.naver.com/?sk={sk}&tk={tk}&st={Uri.EscapeDataString(sentence)}";
-            
+
             string translated = string.Empty;
             try
             {
@@ -200,11 +202,28 @@ namespace AmaurotTranslator
             {
                 if (!tbOriginal.Text.Equals("") && (isTranslatorBusy == false))
                 {
-                    isTranslatorBusy = true;
-                    Translate();
-                    ReTranslate();
-                    isTranslatorBusy = false;
-                    UpdateLogFolderSize();
+                    Thread thread = new Thread(
+                    () =>
+                    {
+                        Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                        {
+                            isTranslatorBusy = true;
+                            grProgress.Visibility = Visibility.Visible;
+                        }));
+                        Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+                        {
+                            Translate();
+                            ReTranslate();
+                            grProgress.Visibility = Visibility.Collapsed;
+                            isTranslatorBusy = false;
+                            UpdateLogFolderSize();
+                        }));
+
+                        Dispatcher.Run();
+                    });
+                    thread.IsBackground = true;
+                    thread.SetApartmentState(ApartmentState.STA);
+                    thread.Start();
                 }
             }
         }
