@@ -56,7 +56,7 @@ namespace AmaurotTranslator
 
             // Following code will watch automatically kill chromeDriver.exe
             // WatchDogMain.exe is from my repo: https://github.com/sappho192/WatchDogDotNet
-            //BootWatchDog();
+            BootWatchDog();
         }
 
         private static void BootWatchDog()
