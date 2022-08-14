@@ -42,7 +42,12 @@
                 <Button Name="btExit" Click="btExit_Click" Content=" X " Background="#00000000" Foreground="White" BorderBrush="#FF7C7C7C"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Name="grProgress" Visibility="Collapsed"
+            Grid.Row="1" Panel.ZIndex="1">
+            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                       Fill="White" Opacity="0.3"/>
+        </Grid>
+        <Grid Grid.Row="1" Panel.ZIndex="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="5*"/>
