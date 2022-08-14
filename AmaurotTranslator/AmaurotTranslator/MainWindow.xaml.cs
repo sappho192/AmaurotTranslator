@@ -135,7 +135,7 @@ namespace AmaurotTranslator
                         ex.StackTrace);
                 tbTranslated.Text = "번역실패";
             }
-            
+
             try
             {
                 Clipboard.Clear();
@@ -153,7 +153,6 @@ namespace AmaurotTranslator
         {
             string sentence = tbTranslated.Text;
             string testUrl = $"https://papago.naver.com/?sk={tk}&tk={sk}&st={Uri.EscapeDataString(sentence)}";
-
 
             try
             {
@@ -244,7 +243,7 @@ namespace AmaurotTranslator
 
         private void btJKSwitch_Click(object sender, RoutedEventArgs e)
         {
-            if(currentState == STATE_K2J)
+            if (currentState == STATE_K2J)
             {
                 currentState = STATE_J2K;
                 btJKSwitch.Content = "한→일";
@@ -256,7 +255,8 @@ namespace AmaurotTranslator
                 tbOriginal.Text = "";
                 tbTranslated.Text = "";
                 tbReTranslated.Text = "";
-            } else
+            }
+            else
             {
                 currentState = STATE_K2J;
                 btJKSwitch.Content = "일→한";
@@ -273,7 +273,7 @@ namespace AmaurotTranslator
 
         private void slOpacity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if(isUIInitialized)
+            if (isUIInitialized)
             {
                 Properties.Settings.Default.globalOpacity = e.NewValue;
                 Properties.Settings.Default.Save();
@@ -294,7 +294,7 @@ namespace AmaurotTranslator
 
         private void Window_LocationChanged(object sender, EventArgs e)
         {
-            if(isUIInitialized)
+            if (isUIInitialized)
             {
                 if (mainWindow.WindowState.Equals(WindowState.Normal))
                 {
