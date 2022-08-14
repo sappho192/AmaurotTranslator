@@ -1,8 +1,18 @@
 # Amaurot Translator
 Lightweight &amp; Japanese-Korean translator for FFXIV
 
-![demo.gif](demo.gif) ![demo2.gif](demo2.gif)  
-![demo3.gif](demo3.gif)
+![demo.gif](demo.gif)  
+한→일 번역  
+
+![demo2.gif](demo2.gif)  
+일→한 번역  
+
+![demo3.gif](demo3.gif)  
+투명도 조절  
+
+![demo4.gif](demo4.gif)  
+번역결과가 클립보드에 자동으로 저장됩니다.  
+채팅창에 Ctrl+V를 눌러 번역 결과를 바로 붙여넣을 수 있습니다.  
 
 ## 권장 실행환경  
 - Windows 10 64bit
