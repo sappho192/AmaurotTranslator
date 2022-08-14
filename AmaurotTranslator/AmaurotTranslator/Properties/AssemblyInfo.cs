@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AmaurotTranslator")]
-[assembly: AssemblyCopyright("Copyright ©sappho192  2021")]
+[assembly: AssemblyCopyright("Copyright ©sappho192  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
